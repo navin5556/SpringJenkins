@@ -1,6 +1,6 @@
 <html>
 <body>
-	<h2>Calculator Page</h2>
+	<h2>Calculator Page App</h2>
 	<form action="add">
 		<input type="number" name="t1"><br> <input type="number"
 			name="t2">
