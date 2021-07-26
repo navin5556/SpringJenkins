@@ -18,6 +18,8 @@ public class AdditionController {
 		model.setViewName("resultPage");
 		model.addObject("result", c);
 		model.addObject("display", "add");
+		
+		
 		return model;
 	}
 	@RequestMapping("subtract")
