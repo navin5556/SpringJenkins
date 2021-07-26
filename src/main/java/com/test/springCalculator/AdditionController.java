@@ -12,15 +12,12 @@ public class AdditionController {
 	@RequestMapping("add")
 	public ModelAndView add(HttpServletRequest request, HttpServletResponse response) {
 		int a = Integer.parseInt(request.getParameter("t1"));
-		
 		int b = Integer.parseInt(request.getParameter("t2"));
 		int c = a + b;
 		ModelAndView model=new ModelAndView();
 		model.setViewName("resultPage");
 		model.addObject("result", c);
 		model.addObject("display", "add");
-		
-		
 		return model;
 	}
 	@RequestMapping("subtract")
@@ -31,7 +28,6 @@ public class AdditionController {
 		ModelAndView model=new ModelAndView();
 		model.setViewName("resultPage");
 		model.addObject("result", c);
-
 		model.addObject("display", "subtract");
 		return model;
 	}
