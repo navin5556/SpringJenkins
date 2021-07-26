@@ -30,6 +30,7 @@ public class AdditionController {
 		ModelAndView model=new ModelAndView();
 		model.setViewName("resultPage");
 		model.addObject("result", c);
+
 		model.addObject("display", "subtract");
 		return model;
 	}
