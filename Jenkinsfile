@@ -19,19 +19,16 @@ pipeline {
                  bat "mvn -Dmaven.test.failure.ignore=true clean package"
                   }    
            }
-        stage('sonarqube analysis') {
-          steps {
-            container ('maven') {
-              withCredentials([string(credentialsId: "assignment3", variable: 'SONAR_TOKEN')]) {
-                withSonarQubeEnv('sonar') {
-                 sh "mvn sonar:sonar -o -gs `pwd`/configuration/settings.xml -Dsonar.login=$SONAR_TOKEN"
-                }
-              }
-              timeout(time: 1, unit: 'HOURS') {
-                waitForQualityGate abortPipeline: true
-              }
-            }
-          }
+        stage('Sonarqube analysis') {
+    steps {
+        script {
+            scannerHome = tool 'assignment3';
         }
+        withSonarQubeEnv('SonarQube') {
+            bat "${scannerHome}/bin/sonar-scanner.bat" 
+        }
+    }
+}
+    
     }
 }
