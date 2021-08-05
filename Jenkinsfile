@@ -19,13 +19,7 @@ pipeline {
                  bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
         }
-            stage('sonar') {
-                steps {
-            withSonarQubeEnv(credentialsId: 'firstProject-key1') {
-                 // some block
-              }
-            }
-          }
+            
             post {
                 // If Maven was able to run the tests, even if some of the test
                 // failed, record the test results and archive the jar file.
@@ -34,6 +28,5 @@ pipeline {
                     archiveArtifacts 'target/*.jar'
                 }
             }
-        }
-    
+       }
 }
