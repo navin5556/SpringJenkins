@@ -22,7 +22,7 @@ pipeline {
         stage('Sonarqube analysis') {
     steps {
         script {
-            scannerHome = tool 'assignment3';
+            scannerHome = tool 'global-sonarqube';
         }
         withSonarQubeEnv('SonarQube') {
             bat "${scannerHome}/bin/sonar-scanner.bat" 
