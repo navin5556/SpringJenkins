@@ -5,8 +5,9 @@ pipeline {
         // Install the Maven version configured as "M3" and add it to the path.
         maven "maven-home"
     }
-
+//--------------------------------
     stages {
+        //-------------------
         stage('Build') {
             steps {
                 // Get some code from a GitHub repository
@@ -19,16 +20,23 @@ pipeline {
                  bat "mvn -Dmaven.test.failure.ignore=true clean package"
                   }    
            }
-        stage('Sonarqube analysis') {
+        //------------------------------------------
+        stage('Sonarqube') {
+    environment {
+        scannerHome = tool 'sonar-scanner'
+    }
     steps {
-        script {
-            scannerHome = tool 'global-sonarqube';
+        withSonarQubeEnv('sonarqube') {
+            sh "${scannerHome}/bin/sonar-scanner"
         }
-        withSonarQubeEnv('SonarQube') {
-            bat "${scannerHome}/bin/sonar-scanner.bat" 
+        timeout(time: 10, unit: 'MINUTES') {
+            waitForQualityGate abortPipeline: true
         }
     }
 }
+   
+        
+   //------------------------------------------
     
     }
 }
