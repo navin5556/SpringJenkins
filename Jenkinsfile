@@ -22,9 +22,11 @@ pipeline {
            }
         //------------------------------------------
       stage('Build & Package') {
+          steps {
     withSonarQubeEnv('global-sonarqube') {
         bat 'mvn clean package sonar:sonar'
     }
+          }
 }
         
    //------------------------------------------
