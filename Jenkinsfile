@@ -7,7 +7,7 @@ pipeline {
     }
 //--------------------------------
     stages {
-        //-------------------
+//--------------------------------------------
         stage('Build') {
             steps {
                 // Get some code from a GitHub repository
@@ -20,7 +20,7 @@ pipeline {
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
                   }    
            }
-        //------------------------------------------
+ //------------------------------------------
       stage('Build & Package') {
           steps {
     withSonarQubeEnv('global-sonarqube') {
@@ -28,17 +28,7 @@ pipeline {
     }
           }
 }
-        
-   //------------------------------------------
-        stage('Build & Package') {
-          steps {
-    withSonarQubeEnv('global-sonarqube') {
-        bat 'mvn clean package sonar:sonar'
-    }
-          }
-}
-        
-        
+             
   //-----------------------------------------
             stage('server') {
                 steps {
@@ -81,6 +71,6 @@ pipeline {
                                    )               
                      }       
               }
-    //-----------------------------------
+ //------------------------------------------------------
     }
 }
