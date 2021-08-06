@@ -26,7 +26,7 @@ pipeline {
         scannerHome = tool 'sonar-scanner'
     }
     steps {
-        withSonarQubeEnv('sonarqube') {
+        withSonarQubeEnv('global-sonarqube') {
             bat "${scannerHome}/sonar-scanner"
         }
        // timeout(time: 10, unit: 'MINUTES') {
