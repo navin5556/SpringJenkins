@@ -33,6 +33,13 @@
 			<version>5.5.2</version>
 			<type>pom</type>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.maven.surefire/surefire-junit4 -->
+		<dependency>
+			<groupId>org.apache.maven.surefire</groupId>
+			<artifactId>surefire-junit4</artifactId>
+			<version>3.0.0-M5</version>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
 		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
 		<dependency>
@@ -41,7 +48,13 @@
 			<version>3.12.4</version>
 			<scope>test</scope>
 		</dependency>
-
+		<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.7.0</version>
+			<scope>test</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -70,6 +83,25 @@
 		</dependency>
 	</dependencies>
 	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>3.0.2</version>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<!-- configure the plugin here -->
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 		<finalName>TestMavenSpring</finalName>
 	</build>
 </project>
