@@ -13,8 +13,8 @@ pipeline {
             
                 git 'https://github.com/navin5556/SpringJenkins.git'
 
-                 //bat "mvn clean package"
-                 bat "mvn test"
+                 bat "mvn clean package"
+                 //bat "mvn test"
                   }    
            }
  //---------------------------------------
