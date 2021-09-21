@@ -21,7 +21,6 @@ pipeline {
  stage('aws connection') {
             steps {
               bat "ssh -i "Naveen-VPC-KEY.pem" ec2-user@34.229.113.27"
-              bat "sudo yum install httpd -y"
                   }    
            }
  //--------------------------------------
