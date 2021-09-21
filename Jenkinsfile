@@ -17,8 +17,12 @@ pipeline {
                // sh "mvn -Dmaven.test.failure.ignore=true clean package"
 
                 // To run Maven on a Windows agent, use
+<<<<<<< HEAD
                  //bat "mvn clean package"
                  // 
+=======
+                 bat "mvn test"
+>>>>>>> b8ad4cc6a767961ab6381549d3c81080375ef143
                   }    
            }
  //---------------------------------------
