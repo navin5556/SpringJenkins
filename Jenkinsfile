@@ -4,15 +4,15 @@ pipeline {
         maven "maven-home"
     }
     stages {
-        stage('Build') {
+        stage('checkout') {
             steps {
                 git 'https://github.com/navin5556/SpringJenkins.git'
-                bat "mvn clean install"
+               
            }
         }
-        stage('test') {
+        stage('test and build') {
             steps {
-                bat "mvn test"
+                 bat "mvn clean install"
            }
         }
         stage('deploy') {
