@@ -1,28 +1,27 @@
 pipeline {
     agent any
-
     tools {
-        // Install the Maven version configured as "M3" and add it to the path.
         maven "maven-home"
     }
-//--------------------------------
     stages {
-//--------------------------------------------
         stage('Build') {
             steps {
-            
                 git 'https://github.com/navin5556/SpringJenkins.git'
-
-                 bat "mvn clean package"
-                 //bat "mvn test"
-                  }    
+                bat "mvn clean install"
            }
- //---------------------------------------
- stage('aws connection') {
+        }
+        stage('test') {
             steps {
-              bat "ssh -i "Naveen-VPC-KEY.pem" ec2-user@34.229.113.27"
-                  }    
+                bat "mvn test"
            }
- //--------------------------------------
+        }
+        stage('deploy') {
+            steps {
+               deploy adapters: [tomcat8(credentialsId: 'tomcat-major-assign', path: '', url: 'http://107.20.12.162:8080/')], contextPath: 'major-assignment', onFailure: false, war: '**/*.war'
+           }
+        }
     }
 }
+
+
+
